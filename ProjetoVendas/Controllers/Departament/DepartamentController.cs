@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjetoVendas.Models.Departament;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace ProjetoVendas.Controllers.Departament
 {
@@ -7,12 +8,12 @@ namespace ProjetoVendas.Controllers.Departament
     {
         public IActionResult Index()
         {
-            List<DepartamentModel> list = new();
+            //List<DepartamentModel> list = new();
 
-            list.Add(new DepartamentModel { Id = 1, Name = "teste" });
-            list.Add(new DepartamentModel { Id = 2, Name = "teste2" });
+            //list.Add(new DepartamentModel { Id = 1, Name = "teste" });
+            //list.Add(new DepartamentModel { Id = 2, Name = "teste2" });
 
-            return View(list);
+            return View();
         }
     }
 }
