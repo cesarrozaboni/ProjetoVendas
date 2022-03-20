@@ -12,21 +12,21 @@ namespace Services.Seller
             return seller.CountSeller();
         }
 
-        public int InsertSales(SellerModel model)
+        public int InsertSeller(SellerModel model)
         {
             SellerDao seller = new SellerDao();
 
             return seller.InsertSeller(model);
         }
 
-        public int UpdateSales(SellerModel model)
+        public int UpdateSeller(SellerModel model)
         {
             SellerDao seller = new SellerDao();
 
             return seller.UpdateSeller(model);
         }
 
-        public int DeleteSales(int id)
+        public int DeleteSeller(int id)
         {
             SellerDao seller = new SellerDao();
 

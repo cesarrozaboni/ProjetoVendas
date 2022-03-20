@@ -24,12 +24,12 @@ namespace ProjetoVendas.Data
             var dep3 = departament.InsertDepartament(new DepartamentModel { Name = "Fashion" });
             var dep4 = departament.InsertDepartament(new DepartamentModel { Name = "Books" });
 
-            var sel1 = seller.InsertSales(new SellerModel { Name = "Joao", Email = "joao@email", BaseSalary = 1800.00M, BirthDate = new DateTime(1998, 4, 21), Departament = new DepartamentModel { Id = dep1 } });
-            var sel2 = seller.InsertSales(new SellerModel { Name = "maria", Email = "maria@email", BaseSalary = 800.00M, BirthDate = new DateTime(1874, 2, 11), Departament = new DepartamentModel { Id = dep1 } });
-            var sel3 = seller.InsertSales(new SellerModel { Name = "luis", Email = "luis@email", BaseSalary = 5800.00M, BirthDate = new DateTime(1964, 11, 01), Departament = new DepartamentModel { Id = dep2 } });
-            var sel4 = seller.InsertSales(new SellerModel { Name = "jose", Email = "jose@email", BaseSalary = 1120.00M, BirthDate = new DateTime(2001, 2, 15), Departament = new DepartamentModel { Id = dep2 } });
-            var sel5 = seller.InsertSales(new SellerModel { Name = "leticia", Email = "leticia@email", BaseSalary = 7800.00M, BirthDate = new DateTime(1997, 6, 22), Departament = new DepartamentModel { Id = dep3 } });
-            var sel6 = seller.InsertSales(new SellerModel { Name = "anastacia", Email = "anastacia@email", BaseSalary = 10800.50M, BirthDate = new DateTime(1974, 9, 30), Departament = new DepartamentModel { Id = dep4 } });
+            var sel1 = seller.InsertSeller(new SellerModel { Name = "Joao", Email = "joao@email", BaseSalary = 1800.00M, BirthDate = new DateTime(1998, 4, 21), Departament = new DepartamentModel { Id = dep1 } });
+            var sel2 = seller.InsertSeller(new SellerModel { Name = "maria", Email = "maria@email", BaseSalary = 800.00M, BirthDate = new DateTime(1874, 2, 11), Departament = new DepartamentModel { Id = dep1 } });
+            var sel3 = seller.InsertSeller(new SellerModel { Name = "luis", Email = "luis@email", BaseSalary = 5800.00M, BirthDate = new DateTime(1964, 11, 01), Departament = new DepartamentModel { Id = dep2 } });
+            var sel4 = seller.InsertSeller(new SellerModel { Name = "jose", Email = "jose@email", BaseSalary = 1120.00M, BirthDate = new DateTime(2001, 2, 15), Departament = new DepartamentModel { Id = dep2 } });
+            var sel5 = seller.InsertSeller(new SellerModel { Name = "leticia", Email = "leticia@email", BaseSalary = 7800.00M, BirthDate = new DateTime(1997, 6, 22), Departament = new DepartamentModel { Id = dep3 } });
+            var sel6 = seller.InsertSeller(new SellerModel { Name = "anastacia", Email = "anastacia@email", BaseSalary = 10800.50M, BirthDate = new DateTime(1974, 9, 30), Departament = new DepartamentModel { Id = dep4 } });
 
             sales.InsertSales(new SalesRecordModel { Id = 1, Date = new DateTime(2022, 01, 12), Amount = 8000.20M, Seller = new SellerModel { Id =sel1 }, Status = SaleStatusModel.Billed });
             sales.InsertSales(new SalesRecordModel { Id = 2, Date = new DateTime(2022, 01, 12), Amount = 8000.20M, Seller = new SellerModel { Id =sel1 }, Status = SaleStatusModel.Billed });

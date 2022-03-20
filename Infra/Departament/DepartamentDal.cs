@@ -12,7 +12,7 @@ namespace Infra.Departament
         public const string SP_DEP_INSERT = "SP_DEP_INSERT";
         public const string SP_DEP_UPDATE = "SP_DEP_UPDATE";
         public const string SP_DEP_DELETE = "SP_DEP_DELETE";
-        public const string SP_DEP_GETFORID = "SP_DEP_GEFORID";
+        public const string SP_DEP_GETFORID = "SP_DEP_GETFORID";
         public const string SP_DEP_GETALL = "SP_DEP_GETALL";
         #endregion
 

@@ -13,7 +13,7 @@ namespace Infra.Seller
         public const string SP_SEL_INSERT   = "SP_SEL_INSERT";
         public const string SP_SEL_UPDATE   = "SP_SEL_UPDATE";
         public const string SP_SEL_DELETE   = "SP_SEL_DELETE";
-        public const string SP_SEL_GETFORID = "SP_SEL_GEFORID";
+        public const string SP_SEL_GETFORID = "SP_SEL_GETFORID";
         public const string SP_SEL_GETALL   = "SP_SEL_GETALL";
         #endregion
 
@@ -32,7 +32,7 @@ namespace Infra.Seller
         public const string READER_EMAIL          = "SELLER_EMAIL";
         public const string READER_BITHDATE       = "SELLER_BIRTHDATE";
         public const string READER_SALARY_BASE    = "SELLER_SALARY_BASE";
-        public const string READER_DEPARTAMENT_ID = "SELLER_DEPARTAMENT_ID";
+        public const string READER_DEPARTAMENT_ID = "SELLER_ID_DEPARTAMENT";
         #endregion
 
         public int CountSeller()
@@ -103,9 +103,11 @@ namespace Infra.Seller
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add(new SqlParameter(PARAM_ID, id));
+                cmd.Parameters.Add(new SqlParameter(PARAM_RETURN_VALUE, 0));
+                cmd.Parameters[PARAM_RETURN_VALUE].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
 
-                return (int)cmd.Parameters[PARAM_RETURN_VALUE].Value;
+                return (int)(Int64)cmd.Parameters[PARAM_RETURN_VALUE].Value;
             }
         }
 
@@ -130,7 +132,7 @@ namespace Infra.Seller
                         model.Email          = Convert.ToString(reader[READER_EMAIL]) ?? string.Empty;
                         model.BirthDate      = Convert.ToDateTime(reader[READER_BITHDATE]);
                         model.BaseSalary     = Convert.ToDecimal(reader[READER_SALARY_BASE]);
-                        model.Departament.Id = Convert.ToInt32(reader[READER_DEPARTAMENT_ID]);
+                        model.Departament = new DepartamentModel() { Id = Convert.ToInt32(reader[READER_DEPARTAMENT_ID]) };
                     }
                 }
             }

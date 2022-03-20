@@ -44,7 +44,7 @@ namespace Services.Departament
         {
             DepartamentDal departament = new DepartamentDal();
 
-            return departament.GetAllDepartament();
+            return departament.GetAllDepartament().OrderBy(x => x.Name).ToList();
         }
     }
 }
