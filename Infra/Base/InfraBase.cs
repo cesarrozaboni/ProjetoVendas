@@ -1,39 +1,25 @@
 ﻿using System.Data.SqlClient;
+using System.Configuration;
+using System.Reflection;
 
 namespace Infra
 {
     public class InfraBase
     {
-        public const string _conexao = "Data Source=ROZABONI-02\\SQLEXPRESS3;Initial Catalog=SistemaVendas;Integrated Security=true";
+        private string _conexao;
 
         public const string PARAM_RETURN_VALUE = "@P_RETURN_VALUE";
 
+        /// <summary>
+        /// string connection to SqlServer
+        /// </summary>
+        public string Conexao { get => _conexao; private set => _conexao = value; }
 
-        public void testeConexao()
+        public InfraBase()
         {
-            
-            
-            //SqlConnection conn = new SqlConnection(AppName);
-            //conn.Open();
-
-            //SqlCommand command = new SqlCommand("Select 1 as id", conn);
-
-            ////command.Parameters.AddWithValue("@zip","india");
-            ////int result = command.ExecuteNonQuery();
-
-            //// result gives the -1 output.. but on insert its 1
-            //using (SqlDataReader reader = command.ExecuteReader())
-            //{
-            //    if (reader.Read())
-            //    {
-            //        var teste = reader["id"];
-            //    }
-            //    // iterate your results here
-
-
-            //}
-
-            //conn.Close();
+            string assemblyPath = new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath;
+            Configuration cfg = ConfigurationManager.OpenExeConfiguration(assemblyPath);
+            _conexao = cfg.AppSettings.Settings["ConnectionString"].Value.ToString();
         }
     }
 }

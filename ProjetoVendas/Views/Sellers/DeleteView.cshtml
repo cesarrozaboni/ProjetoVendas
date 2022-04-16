@@ -6,9 +6,11 @@
     ViewData["Title"] = "Remover Vendedor";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["Title"]</h4>
 
 <hr />
+<h5>Deseja excluir o vendedor @Model.Name?</h5>
+
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -39,7 +41,7 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Remover" class="btn btn-danger" />
-        <a asp-action="Index" >Voltar</a>
+        <input type="submit" value="Remover" class="btn btn-danger fw-bold" />
+        <a class="btn btn-info fw-bold" asp-action="Index" >Voltar</a>
     </form>
 </div>

@@ -1,0 +1,53 @@
+﻿@model Domain.Sales.SalesRecordModel
+
+@{
+    ViewData["Title"] = "Excluir Venda";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<hr />
+
+<h5>Deseja cancelar esta venda?</h5>
+
+<br/>
+
+<div>     
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class = "col-sm-2">
+            Vendedor
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seller.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" asp-action="Delete" value="Excluir" asp-route-id="@Model.Id" class="btn btn-danger fw-bold" />
+        <a asp-action="Index" class="btn btn-info fw-bold">Voltar</a>
+    </form>
+</div>

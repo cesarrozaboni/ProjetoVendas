@@ -1,0 +1,63 @@
+﻿@using Domain.Sales
+@using Domain.Seller
+@model Domain.Sales.SalesRecordModel
+
+@{
+    ViewData["Title"] = "Editar Venda";
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                   <div class="form-group">
+                        <label asp-for="Date" class="control-label"></label>
+                        <input asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" class="form-control" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                     <div class="form-group">
+                    <label asp-for="Seller.Id" class="control-label">Vendedor</label>
+
+                    <select asp-for="Seller.Id" class="form-control" asp-items="@(new SelectList(ViewData["ListSeller"] as ICollection<SellerModel>, "Id", "Name"))"></select>
+                    <span asp-validation-for="Seller.Id" class="text-danger"></span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+
+                    <select asp-for="Status" class="form-control" asp-items="@(new SelectList(ViewData["ListSales"] as ICollection<ListStatus>, "Id", "Status"))"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-info fw-bold">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

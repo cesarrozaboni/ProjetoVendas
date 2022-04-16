@@ -1,16 +1,14 @@
 ﻿using Domain.Seller;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoVendas.Models.Departament
 {
     public class DepartamentModel
     {
-        public int Id      { get; set; }
-        public string Name { get; set; }
-        public ICollection<SellerModel> Seller { get; set; } = new List<SellerModel>();
-
+        #region "Constructor"
         public DepartamentModel()
         {
-
         }
 
         public DepartamentModel(int id, string name)
@@ -18,15 +16,16 @@ namespace ProjetoVendas.Models.Departament
             Id   = id;
             Name = name;
         }
+        #endregion
 
-        public void AddSeller(SellerModel seller)
-        {
-            Seller.Add(seller);
-        }
 
-        public decimal TotalSales(DateTime initial, DateTime final)
-        {
-            return Seller.Sum(seller => seller.TotalSales(initial, final));
-        }
+        [DisplayName("Id")]
+        public int Id       { get; set; }
+        
+        [Required(ErrorMessage ="{0} é obrigatorio")]
+        [DisplayName("Nome")]
+        public string? Name { get; set; }
+        public ICollection<SellerModel> Seller { get; set; } = new List<SellerModel>();
+
     }
 }

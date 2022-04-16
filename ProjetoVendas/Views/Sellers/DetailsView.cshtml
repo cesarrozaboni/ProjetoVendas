@@ -3,12 +3,13 @@
 @model SellerModel
 
 @{
-    ViewData["Title"] = "Remover Vendedor";
+    ViewData["Title"] = "Detalhes do Vendedor";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h4>@ViewData["Title"]</h4>
 
 <hr />
+
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -36,7 +37,7 @@
             @Html.DisplayFor(model => model.BaseSalary)
         </dd>
          <dt>
-            @Html.DisplayNameFor(model => model.Departament.Name)
+            Departamento
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Departament.Name)
@@ -45,6 +46,6 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" >Editar</a>
-    <a asp-action="Index" >Voltar</a>
+    <a class="btn btn-warning fw-bold" asp-action="Edit" asp-route-id="@Model.Id" >Editar</a>
+    <a class="btn btn-info fw-bold" asp-action="Index" >Voltar</a>
 </div>

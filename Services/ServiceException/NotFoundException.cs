@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Exception
+namespace Services.ServiceException
 {
     public class NotFoundException : ApplicationException
     {

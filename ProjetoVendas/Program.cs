@@ -1,6 +1,10 @@
+using Infra.Departament;
+using Infra.SalesRecord;
+using Infra.Seller;
 using Microsoft.AspNetCore.Localization;
 using ProjetoVendas.Data;
 using Services.Departament;
+using Services.SalesRecord;
 using Services.Seller;
 using System.Globalization;
 
@@ -9,13 +13,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<SeedingData>();
+builder.Services.AddScoped<SellerDal>();
 builder.Services.AddScoped<SellerService>();
+
+builder.Services.AddScoped<DepartamentDal>();
 builder.Services.AddScoped<DepartamentService>();
+
+builder.Services.AddScoped<SalesRecordDal>();
+builder.Services.AddScoped<SalesRecordService>();
+
+builder.Services.AddScoped<SeedingData>();
 
 var app = builder.Build();
 
-var enUS = new CultureInfo("en-US");
+var enUS = new CultureInfo("pt-BR");
 var localizationOption = new RequestLocalizationOptions
 {
     DefaultRequestCulture = new RequestCulture(enUS),
@@ -34,7 +45,7 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    new SeedingData().Seed();
+    new SeedingData(new DepartamentService(new DepartamentDal()), new SellerService(new SellerDal()), new SalesRecordService(new SalesRecordDal())).Seed();
 }
 
 app.UseHttpsRedirection();
